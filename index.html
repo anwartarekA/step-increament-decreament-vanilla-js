@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>step project by vanilla js</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="steps">
+      <div class="numbers">
+        <div class="one active">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+      </div>
+      <div class="msg">
+        <p></p>
+      </div>
+      <div class="btns">
+        <button class="previous">previous</button>
+        <button class="next">next</button>
+      </div>
+    </div>
+    <script>
+      let steps = [
+        "Learn React ⚛",
+        "Apply Technologies 💢",
+        "Make Practices 🏆",
+      ];
+      document.querySelector("p").innerHTML = steps[0];
+
+      let step = 1;
+      // decument elements
+      const nextBtn = document.querySelector(".next");
+      const previousBtn = document.querySelector(".previous");
+      const one = document.querySelector(".one");
+      const two = document.querySelector(".two");
+      const three = document.querySelector(".three");
+      // handle next function
+      const handleNext = () => {
+        if (step < 3) step += 1;
+        document.querySelector("p").innerHTML = steps[step - 1];
+
+        if (step === 1) {
+          one.classList.add("active");
+        }
+
+        if (step === 2) {
+          one.classList.add("active");
+          two.classList.add("active");
+        }
+        if (step === 3) {
+          one.classList.add("active");
+          two.classList.add("active");
+          three.classList.add("active");
+        }
+      };
+      // handle previous function
+      const handlePrevious = () => {
+        if (step > 1) step -= 1;
+        document.querySelector("p").innerHTML = steps[step - 1];
+        if (step === 1) {
+          one.classList.add("active");
+          two.classList.remove("active");
+          three.classList.remove("active");
+        }
+
+        if (step === 2) {
+          one.classList.add("active");
+          two.classList.add("active");
+          three.classList.remove("active");
+        }
+        if (step === 3) {
+          one.classList.add("active");
+          two.classList.add("active");
+          three.classList.add("active");
+        }
+      };
+      nextBtn.addEventListener("click", handleNext);
+      previousBtn.addEventListener("click", handlePrevious);
+    </script>
+  </body>
+</html>
